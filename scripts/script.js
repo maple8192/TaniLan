@@ -10,6 +10,12 @@
 . -> 18
 */
 
+const Commands = [
+    ["たに", "やん", "椛谷", "18"],
+    ["yan"],
+    ["Tani", "Tako"]
+]
+
 function run() {
     const code = load()
 
