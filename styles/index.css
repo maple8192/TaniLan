@@ -24,13 +24,13 @@
 }
 
 .source {
-
+    flex: 2;
 }
 
 .run {
-
+    height: 30px;
 }
 
 .result {
-    
+    flex: 1;
 }
