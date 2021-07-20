@@ -20,12 +20,43 @@ const Commands = {
     out: 6
 }
 
+class Result {
+    constructor() {
+        this.ret = null
+        this.err = null
+    }
+
+    success(ret) {
+        this.ret = ret
+        this.err = null
+    }
+
+    error(err) {
+        this.ret = null
+        this.err = err
+    }
+
+    isSuccess() {
+        return (this.suc != null)
+    }
+
+    onSuccess(fun) {
+        if(this.isSuccess) {
+            fun(this.ret)
+        }
+    }
+
+    onError(fun) {
+        if(!this.isSuccess) {
+            fun(this.err)
+        }
+    }
+}
+
 function run() {
     const code = load()
 
-    const commandSet = interpret(code)
-
-    console.log(commandSet)
+    const ret = interpret(code)
 }
 
 function load() {
@@ -72,7 +103,7 @@ function interpret(code) {
                 break
         }
     }
-    if(p != code.length) {return []}
+    if(p != code.length) {return new Result().error("Syntax Error")}
 
-    return commands
+    return new Result().success(commands)
 }
