@@ -1,5 +1,15 @@
 "use strict"
 
+/*
++ -> Tani
+- -> Tako
+> -> yan
+< -> たに
+[ -> やん
+] -> 椛谷
+. -> 18
+*/
+
 function run() {
     const code = load()
 
