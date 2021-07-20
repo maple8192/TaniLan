@@ -39,4 +39,7 @@
 
 .result {
     flex: 1;
+    overflow: auto;
+    font-size: 20px;
+    resize: none;
 }
