@@ -218,8 +218,6 @@ function interpret(commands) {
                 ret += String.fromCharCode(memory[pointer])
                 break
         }
-
-        console.log(memory)
     }
 
     return new Result().success(ret)
