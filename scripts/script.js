@@ -63,7 +63,15 @@ function run() {
     const ret = tokenize(code)
 
     ret.onSuccess((ret) => {
-        interpret(ret)
+        alert("a")
+
+        const disp = interpret(ret)
+
+        disp.onSuccess((ret) => {
+            alert("b")
+
+            console.log(ret)
+        })
     })
 }
 
@@ -120,22 +128,93 @@ function interpret(commands) {
     let memory = [0]
     let pointer = 0
 
-    commands.forEach((it) => {
-        switch(it) {
+    let ret = ""
+
+    for(let i = 0; i < commands.length; i++) {
+        switch(commands[i]) {
             case Commands.add:
-                break;
+                if(memory[pointer] == 255) {
+                    memory[pointer] = 0
+                }else {
+                    memory[pointer]++
+                }
+                break
             case Commands.sub:
-                break;
+                if(memory[pointer] == 0) {
+                    memory[pointer] = 255
+                }else {
+                    memory[pointer]--
+                }
+                break
             case Commands.sft:
-                break;
+                pointer++
+                if(memory.length <= pointer) {
+                    memory.push(0)
+                }
+                break
             case Commands.usf:
-                break;
+                pointer--
+                if(pointer < 0) {
+                    return new Result().error("OutOfMemory")
+                }
+                break
             case Commands.sta:
-                break;
+                if(memory[pointer] == 0) {
+                    let nest = 0
+
+                    let b = false
+
+                    for(let p = i + 1; p < commands.length; p++) {
+                        switch(commands[p]) {
+                            case Commands.sta:
+                                nest++
+                                break
+                            case Commands.end:
+                                if(nest == 0) {
+                                    i = p + 1
+                                    b = true
+                                }
+                                nest--
+                                break
+                        }
+
+                        if(b) {
+                            break
+                        }
+                    }
+                }
+                break
             case Commands.end:
-                break;
+                if(memory[pointer] != 0) {
+                    let nest = 0
+
+                    let b = false
+
+                    for(let p = i - 1; p >= 0; p--) {
+                        switch(commands[p]) {
+                            case Commands.sta:
+                                if(nest == 0) {
+                                    i = p + 1
+                                    b = true
+                                }
+                                nest--
+                                break
+                            case Commands.end:
+                                nest++
+                                break
+                        }
+
+                        if(b) {
+                            break
+                        }
+                    }
+                }
+                break
             case Commands.out:
-                break;
+                ret += String.fromCharCode(memory[pointer])
+                break
         }
-    })
+    }
+
+    return new Result().success(ret)
 }
