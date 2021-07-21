@@ -66,14 +66,14 @@ function run() {
         const disp = interpret(ret)
 
         disp.onSuccess((ret2) => {
-            console.log(ret2)
+            display(ret2, false)
         })
         disp.onError((err2) => {
-            alert(err2)
+            display(ret2, true)
         })
     })
     ret.onError((err) => {
-        console.log(err)
+        display(ret2, true)
     })
 }
 
@@ -221,4 +221,16 @@ function interpret(commands) {
     }
 
     return new Result().success(ret)
+}
+
+function display(str, err) {
+    const result = document.getElementById("Result")
+
+    if(err) {
+        result.style.color = "#FF4444"
+        result.value = str
+    }else {
+        result.style.color = "#000000"
+        result.value = str
+    }
 }
