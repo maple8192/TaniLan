@@ -60,7 +60,7 @@ class Result {
 function run() {
     const code = load()
 
-    const ret = interpret(code)
+    const ret = tokenize(code)
 }
 
 function load() {
@@ -71,7 +71,7 @@ function load() {
     return code
 }
 
-function interpret(code) {
+function tokenize(code) {
     let commands = []
 
     let p = 0;
