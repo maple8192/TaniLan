@@ -198,7 +198,7 @@ function interpret(commands) {
                         switch(commands[p]) {
                             case Commands.sta:
                                 if(nest == 0) {
-                                    i = p + 1
+                                    i = p
                                     b = true
                                 }
                                 nest--
@@ -218,6 +218,8 @@ function interpret(commands) {
                 ret += String.fromCharCode(memory[pointer])
                 break
         }
+
+        console.log(memory)
     }
 
     return new Result().success(ret)
