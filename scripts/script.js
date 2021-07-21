@@ -45,13 +45,13 @@ class Result {
     }
 
     onSuccess(fun) {
-        if(this.isSuccess) {
+        if(this.isSuccess()) {
             fun(this.ret)
         }
     }
 
     onError(fun) {
-        if(!this.isSuccess) {
+        if(!this.isSuccess()) {
             fun(this.err)
         }
     }
