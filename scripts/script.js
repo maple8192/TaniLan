@@ -29,11 +29,15 @@ class Result {
     success(ret) {
         this.ret = ret
         this.err = null
+
+        return this
     }
 
     error(err) {
         this.ret = null
         this.err = err
+
+        return this
     }
 
     isSuccess() {
