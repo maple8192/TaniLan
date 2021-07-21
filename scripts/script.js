@@ -69,11 +69,11 @@ function run() {
             display(ret2, false)
         })
         disp.onError((err2) => {
-            display(ret2, true)
+            display(err2, true)
         })
     })
     ret.onError((err) => {
-        display(ret2, true)
+        display(err, true)
     })
 }
 
