@@ -61,6 +61,10 @@ function run() {
     const code = load()
 
     const ret = tokenize(code)
+
+    ret.onSuccess((ret) => {
+        interpret(ret)
+    })
 }
 
 function load() {
