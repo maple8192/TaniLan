@@ -93,7 +93,9 @@ function run() {
 function load() {
     let code = document.getElementById("Source").value
 
-    code = code.replaceAll(/\n/g, '')
+    code = code.replace(/\n/g, '')
+    code = code.replace(/ /g, '')
+    code = code.replace(/\t/g, '')
 
     return code
 }
