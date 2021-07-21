@@ -57,6 +57,10 @@ class Result {
     }
 }
 
+onload = function() {
+    
+}
+
 function run() {
     const code = load()
 
