@@ -111,3 +111,7 @@ function tokenize(code) {
 
     return new Result().success(commands)
 }
+
+function interpret(commands) {
+
+}
