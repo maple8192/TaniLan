@@ -117,5 +117,25 @@ function tokenize(code) {
 }
 
 function interpret(commands) {
+    let memory = [0]
+    let pointer = 0
 
+    commands.forEach((it) => {
+        switch(it) {
+            case Commands.add:
+                break;
+            case Commands.sub:
+                break;
+            case Commands.sft:
+                break;
+            case Commands.usf:
+                break;
+            case Commands.sta:
+                break;
+            case Commands.end:
+                break;
+            case Commands.out:
+                break;
+        }
+    })
 }
