@@ -41,7 +41,7 @@ class Result {
     }
 
     isSuccess() {
-        return (this.suc != null)
+        return (this.err === null && this.suc !== null)
     }
 
     onSuccess(fun) {
@@ -63,15 +63,17 @@ function run() {
     const ret = tokenize(code)
 
     ret.onSuccess((ret) => {
-        alert("a")
-
         const disp = interpret(ret)
 
-        disp.onSuccess((ret) => {
-            alert("b")
-
-            console.log(ret)
+        disp.onSuccess((ret2) => {
+            console.log(ret2)
         })
+        disp.onError((err2) => {
+            alert(err2)
+        })
+    })
+    ret.onError((err) => {
+        console.log(err)
     })
 }
 
@@ -84,6 +86,8 @@ function load() {
 }
 
 function tokenize(code) {
+    if(code.length == 0) {return new Result().error("No Code")}
+
     let commands = []
 
     let p = 0;
