@@ -4,9 +4,9 @@
 + -> Tani
 - -> Tako
 > -> yan
-< -> たに
-[ -> やん
-] -> 椛谷
+< -> やん
+[ -> たに
+] -> たこ
 . -> 18
 */
 
@@ -85,15 +85,15 @@ function interpret(code) {
                 commands.push(Commands.sft)
                 p = i
                 break
-            case "たに":
+            case "やん":
                 commands.push(Commands.usf)
                 p = i
                 break
-            case "やん":
+            case "たに":
                 commands.push(Commands.sta)
                 p = i
                 break
-            case "椛谷":
+            case "たこ":
                 commands.push(Commands.end)
                 p = i
                 break
