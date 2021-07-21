@@ -58,7 +58,16 @@ class Result {
 }
 
 onload = function() {
-    
+    writeExample()
+}
+
+function writeExample() {
+    const textarea = document.getElementById("Source")
+
+    textarea.value = "TaniTaniTaniTaniTaniTaniTaniTaniTani\nたに\nyan\nTaniTaniTaniTaniTaniTaniTaniTani\nyan\nTaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTani\nyan\nTaniTaniTani\nyan\nTani\n"
+                    + "やんやんやんやん\nTako\nたこ\nyan\n18\nyan\nTaniTani\n18\nTaniTaniTaniTaniTaniTaniTani\n1818\nTaniTaniTani\n18\nyan\nTaniTaniTaniTaniTani\n18\nやんやん\n"
+                    + "TaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTaniTani\n18\nyan\n18\nTaniTaniTani\n18\nTakoTakoTakoTakoTakoTako\n18\nTakoTakoTakoTakoTakoTakoTakoTako\n"
+                    + "18\nyan\nTani\n18\nyan\nTani\n18"
 }
 
 function run() {
